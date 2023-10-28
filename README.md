@@ -1,10 +1,10 @@
 **packages**
 
-- npm i -D eslint @typescript-eslint/parser eslint-config-prettier eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks lint-staged husky
+- `npm i -D eslint @typescript-eslint/parser eslint-config-prettier eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks lint-staged husky`
 
-- npm i -D --save-exact prettier
+- `npm i -D --save-exact prettier`
 
-- npm i -D --legacy-peer-deps @typescript-eslint/eslint-plugin
+- `npm i -D --legacy-peer-deps @typescript-eslint/eslint-plugin`
 
 - purpose:
   - eslint
