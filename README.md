@@ -93,11 +93,11 @@
 
 **package.json**
 
-script:
+- script:
 
-- lint: `eslint --ignore-path .eslintignore --max-warnings 0 './src/**/*.{js,jsx,ts,tsx}'`
-- lint:fix: `eslint --ignore-path .eslintignore --fix './src/**/*.{js,jsx,ts,tsx}'`
-- format: `prettier --ignore-path .gitignore --write './src/**/*.{js,jsx,ts,tsx,json,css}'`
+  - lint: `eslint --ignore-path .eslintignore --max-warnings 0 './src/**/*.{js,jsx,ts,tsx}'`
+  - lint:fix: `eslint --ignore-path .eslintignore --fix './src/**/*.{js,jsx,ts,tsx}'`
+  - format: `prettier --ignore-path .gitignore --write './src/**/*.{js,jsx,ts,tsx,json,css}'`
 
 **lint-staged**
 
