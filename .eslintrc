@@ -1,0 +1,36 @@
+{
+  "root": true,
+  "env": { "browser": true, "es2022": true },
+  "settings": {
+    "react": { "version": "detect" }
+  },
+  "ignorePatterns": ["dist", ".eslintrc", "*.test.tsx"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": { "sourceType": "module" },
+  "rules": {
+    "prettier/prettier": [1, { "endOfLine": "auto" }],
+    "react-hooks/rules-of-hooks": 2,
+    "react-hooks/exhaustive-deps": 0,
+    "react/jsx-no-useless-fragment": 1,
+    "no-console": 1,
+    "@typescript-eslint/no-unused-vars": 1,
+    "@typescript-eslint/no-inferrable-types": 1,
+    "@typescript-eslint/no-non-null-assertion": 0,
+    "@typescript-eslint/no-explicit-any": 0
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "rules": { "no-unused-vars": 0 }
+    }
+  ]
+}
