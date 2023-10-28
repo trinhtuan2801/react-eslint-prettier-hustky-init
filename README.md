@@ -1,46 +1,111 @@
-# Getting Started with Create React App
+**packages**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- npm i -D eslint @typescript-eslint/parser eslint-config-prettier eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks lint-staged husky
 
-## Available Scripts
+- npm i -D --save-exact prettier
 
-In the project directory, you can run:
+- npm i -D --legacy-peer-deps @typescript-eslint/eslint-plugin
 
-### `npm start`
+- purpose:
+  - eslint
+  - @typescript-eslint/parser - `help eslint understand typescript`
+  - eslint-config-prettier - `prettier applied rules (put in extends)`
+  - eslint-plugin-prettier - `prettier rule sets (put in plugins)`
+  - eslint-plugin-react - `react apllied rules`
+  - eslint-plugin-react-hooks - `react hooks apllied rules`
+  - prettier (--save-exact)
+  - lint-staged
+  - husky
+  - @typescript-eslint/eslint-plugin (--legacy-peer-deps)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**prettier**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- printWidth: 80
+- tabWidth: 2
+- semi: true
+- singleQuote: true
+- jsxSingleQuote: true
+- bracketSpacing: true
+- bracketSameLine: false
+- arrowParens: "always"
+- trailingComma: "all" - `good for git diff object & array`
 
-### `npm test`
+**eslint**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- root: true
+- env:
 
-### `npm run build`
+  - browser: true
+  - es2022: true
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- setting:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - react
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    - version: detect
 
-### `npm run eject`
+- ignorePatterns:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  - dist
+  - .eslintrc.cjs
+  - \*.test.tsx
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- parser - `parse language`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  - @typescript-eslint/parser
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- plugins - `set of rules, but not applied yet, can be applied later in rules`
 
-## Learn More
+  - prettier
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- extends - `applied preset of rules`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  - eslint:recommended
+  - plugin:@typescript-eslint/recommended - `fix import problem in typescript`
+  - plugin:react/recommended - `react/jsx rules`
+  - plugin:react/jsx-runtime - `no need to import React`
+  - plugin:react-hooks/recommended - `hook rules`
+  - plugin:prettier/recommended - `play nice with prettier`
+
+- parserOptions
+
+  - sourceType: "module"
+
+- rules:
+
+  - prettier/prettier: [ 1, { endOfLine: "auto" }] `(fix endline problem)`
+  - react-hooks/rules-of-hooks: 2
+  - react-hooks/exhaustive-deps: 0
+  - react/jsx-no-useless-fragment: 1
+  - no-console: 1
+  - @typescript-eslint/no-unused-vars: 1
+  - @typescript-eslint/no-inferrable-types: 1
+  - @typescript-eslint/no-non-null-assertion: 0
+  - @typescript-eslint/no-explicit-any: 0
+
+- overrides:
+
+  - files: ["*.ts"]
+
+  - rules:
+
+    - no-unused-vars: 0 - `ignore warning of unused variables in interface of typescript, @typescript-eslint/no-unused-vars already handle this `
+
+**package.json**
+
+script:
+
+- lint: `eslint --ignore-path .eslintignore --max-warnings 0 './src/**/*.{js,jsx,ts,tsx}'`
+- lint:fix: `eslint --ignore-path .eslintignore --fix './src/**/*.{js,jsx,ts,tsx}'`
+- format: `prettier --ignore-path .gitignore --write './src/**/*.{js,jsx,ts,tsx,json,css}'`
+
+**lint-staged**
+
+- \*.{ts,tsx,js,jsx}: ["prettier -w", "eslint --max-warnings 0"]
+- \*.{css,json}: ["prettier -w"]
+
+**husky**
+
+- npx husky-init
+- npm i
+- npx husky set .husky/pre-commit "npx lint-staged"
